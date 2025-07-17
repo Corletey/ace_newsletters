@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AAU-ACE Newsletter</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .newsletter-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 3s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .newsletter-date {
+            font-size: 12px;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+
+        .newsletter-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .newsletter-subtitle {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-section {
+            padding: 40px;
+            background: white;
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .content-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .card-category {
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #1e3a8a;
+        }
+
+        .card-description {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .card-meta {
+            font-size: 12px;
+            color: #999;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .highlight-section {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: #1f2937;
+            padding: 30px;
+            margin: 20px 0;
+            border-radius: 12px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .highlight-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .highlight-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer {
+            background: #1e3a8a;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .footer-links {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: #93c5fd;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .section-grid {
+                grid-template-columns: 1fr;
+            }
+            
+
+            .newsletter-title {
+                font-size: 20px;
+            }
+        }
+        /* Page 2 */
+         .header-top {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            opacity: 0.9;
+        }
+
+        .header-subtitle {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        /* Hero section with building image */
+        .hero-section {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+            background: #1e3a8a;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.8), rgba(59, 130, 246, 0.6));
+            padding: 30px 20px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-list {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .hero-list li {
+            font-size: 14px;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+            opacity: 0.95;
+        }
+
+        .hero-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #fbbf24;
+            font-weight: bold;
+        }
+
+        .hero-tagline {
+            font-size: 16px;
+            font-weight: bold;
+            color: #fbbf24;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Main content section */
+        .content-section {
+            padding: 30px 20px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1e3a8a;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .column-section {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .column-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #1e3a8a;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .column-text {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #4b5563;
+            margin-bottom: 12px;
+        }
+
+        .column-text:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Profile section */
+        .profile-section {
+            background: #1e3a8a;
+            color: white;
+            padding: 25px 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .profile-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #fbbf24;
+        }
+
+        .profile-content {
+            flex: 1;
+        }
+
+        .profile-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #fbbf24;
+        }
+
+        .profile-title {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            opacity: 0.9;
+        }
+
+        .profile-description {
+            font-size: 12px;
+            line-height: 1.5;
+            opacity: 0.9;
+        }
+
+        /* Full-width text sections */
+        .full-width-section {
+            margin: 25px 0;
+        }
+
+        .section-header {
+            background: #fbbf24;
+            color: #1f2937;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .text-block {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #4b5563;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .text-block:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Quote section */
+        .quote-section {
+            background: linear-gradient(135deg, #e5e7eb 0%, #f3f4f6 100%);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border-left: 4px solid #fbbf24;
+        }
+
+        .quote-text {
+            font-size: 15px;
+            font-style: italic;
+            color: #374151;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .quote-author {
+            font-size: 12px;
+            color: #6b7280;
+            text-align: right;
+            font-weight: bold;
+        }
+
+        /* Statistics grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .stat-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1e3a8a;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1e3a8a;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 11px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-left {
+            text-align: left;
+        }
+
+        .footer-center {
+            flex: 1;
+            text-align: center;
+        }
+
+        .footer-right {
+            text-align: right;
+        }
+
+        .page-number {
+            background: #fbbf24;
+            color: #1f2937;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .newsletter-container {
+                margin: 10px;
+                max-width: none;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .footer-left, .footer-center, .footer-right {
+                text-align: center;
+            }
+
+            .hero-title {
+                font-size: 22px;
+            }
+
+            .newsletter-title {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-title {
+                font-size: 20px;
+            }
+
+            .newsletter-title {
+                font-size: 16px;
+            }
+
+            .content-section {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+     <!-- Page 02 -->
+         <div class="newsletter-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-top">Quarterly Publication | December 2024</div>
+            <div class="newsletter-title">Education Excellence Newsletter</div>
+            <div class="header-subtitle">Africa Higher Education Centres of Excellence (AAU-ACE)</div>
+        </div>
+
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <img src="https://ace.aau.org/wp-content/uploads/2023/11/last-.jpg" alt="Modern University Buildings" class="hero-image">
+            <div class="hero-overlay">
+                <div class="hero-title">5 EASY RENOVATIONS TO INCREASE YOUR EDUCATION VALUE</div>
+                <ul class="hero-list">
+                    <li>Upgrade research facilities and laboratories</li>
+                    <li>Enhance digital infrastructure and connectivity</li>
+                    <li>Modernize learning spaces with smart technology</li>
+                    <li>Implement sustainable energy solutions</li>
+                    <li>Create collaborative innovation hubs</li>
+                </ul>
+                <div class="hero-tagline">WHY CHOOSE AAU-ACE?</div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content-section">
+            <div class="two-column">
+                <div class="column-section">
+                    <div class="column-title">Excellence in Research</div>
+                    <div class="column-text">
+                        Our Centres of Excellence represent the pinnacle of academic achievement across Africa. Through rigorous research programs, we've established partnerships with leading global universities to advance knowledge in critical areas including agriculture, technology, health sciences, and environmental sustainability.
+                    </div>
+                    <div class="column-text">
+                        Each centre operates with state-of-the-art facilities, world-class faculty, and innovative research methodologies that address Africa's most pressing challenges while contributing to global scientific advancement.
+                    </div>
+                </div>
+
+                <div class="column-section">
+                    <div class="column-title">Innovation & Development</div>
+                    <div class="column-text">
+                        Our innovation hubs serve as catalysts for technological advancement and entrepreneurship. Students and faculty collaborate on groundbreaking projects that translate academic research into practical solutions for African communities.
+                    </div>
+                    <div class="column-text">
+                        From agricultural technology to digital health solutions, our centres are at the forefront of innovation, fostering the next generation of African innovators and thought leaders.
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Success Story" class="profile-image">
+                <div class="profile-content">
+                    <div class="profile-name">SUCCESS STORY</div>
+                    <div class="profile-title">Dr. Akinyi Wanjiku - Innovation Manager</div>
+                    <div class="profile-description">
+                        "The AAU-ACE programme has transformed how we approach research and innovation. Our agricultural centre has developed drought-resistant crop varieties that are now being used by farmers across East Africa, directly impacting food security in the region."
+                    </div>
+                </div>
+            </div>
+
+            <div class="full-width-section">
+                <div class="section-header">Transforming Higher Education Across Africa</div>
+                <div class="text-block">
+                    The Association of African Universities' Centres of Excellence initiative represents a transformative approach to higher education development across the continent. By focusing on specialized areas of research and innovation, we're creating hubs of excellence that serve as catalysts for regional development and global competitiveness.
+                </div>
+                <div class="text-block">
+                    Our comprehensive approach includes capacity building for faculty and students, infrastructure development, research collaboration, and industry partnerships. This holistic strategy ensures that our centres not only excel in academic pursuits but also contribute meaningfully to economic development and social progress.
+                </div>
+                <div class="text-block">
+                    Through strategic partnerships with international institutions, government agencies, and private sector organizations, we're building a network of excellence that transcends national boundaries. Our centres serve as bridges between academic research and practical application, ensuring that knowledge generated within our institutions directly benefits African communities.
+                </div>
+            </div>
+
+            <div class="quote-section">
+                <div class="quote-text">
+                    "The future of Africa depends on our ability to harness the power of education and innovation. The AAU-ACE programme is not just about academic excellence; it's about creating solutions that transform lives and build sustainable futures for African communities."
+                </div>
+                <div class="quote-author">- Prof. Olusola Oyewole, Secretary-General, Association of African Universities</div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">156</div>
+                    <div class="stat-label">Universities</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">45</div>
+                    <div class="stat-label">Countries</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2.3M</div>
+                    <div class="stat-label">Students</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">12K</div>
+                    <div class="stat-label">Research Projects</div>
+                </div>
+            </div>
+
+            <div class="full-width-section">
+                <div class="section-header">Looking Ahead: The Future of African Higher Education</div>
+                <div class="text-block">
+                    As we look toward the future, the AAU-ACE programme continues to evolve and adapt to meet the changing needs of African higher education. Our strategic vision for the next decade includes expanding our network of centres, strengthening international partnerships, and developing innovative approaches to research and education delivery.
+                </div>
+                <div class="text-block">
+                    Key priorities include digital transformation of learning environments, sustainable development practices, and enhanced collaboration between centres across different regions. We're also focusing on building stronger links with industry and government to ensure that our research outputs translate into tangible benefits for African societies.
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-left">
+                <div>© 2024 AAU-ACE</div>
+                <div>www.aau.org</div>
+            </div>
+            <div class="footer-center">
+                <div>Association of African Universities</div>
+                <div>Africa Higher Education Centres of Excellence</div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Page 1 -->
+    <div class="newsletter-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-content">
+                <div class="newsletter-date">QUARTERLY PUBLICATION | DECEMBER 2024</div>
+                <div class="newsletter-title">Excellence in Education</div>
+                <div class="newsletter-subtitle">Africa Higher Education Centres of Excellence Newsletter</div>
+            </div>
+        </div>
+
+        <!-- Content Section -->
+        <div class="content-section">
+            <div class="section-grid">
+                <div class="content-card">
+                    <div class="card-category">Research Excellence</div>
+                    <h3 class="card-title">Breakthrough Research in Agricultural Innovation</h3>
+                    <p class="card-description">Our agricultural research centres have developed drought-resistant crop varieties that are transforming food security across the continent.</p>
+                    <div class="card-meta">
+                        <span>Dr. Amina Kone</span>
+                        <span>15 Dec 2024</span>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-category">Technology Hub</div>
+                    <h3 class="card-title">Digital Innovation Centers Lead Tech Revolution</h3>
+                    <p class="card-description">From AI applications to blockchain solutions, our technology centers are pioneering digital transformation across African universities.</p>
+                    <div class="card-meta">
+                        <span>Prof. Kwame Asante</span>
+                        <span>12 Dec 2024</span>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-category">Health Sciences</div>
+                    <h3 class="card-title">Medical Research Advances Healthcare Access</h3>
+                    <p class="card-description">Groundbreaking research in tropical diseases and healthcare delivery is improving medical outcomes across rural communities.</p>
+                    <div class="card-meta">
+                        <span>Dr. Fatima Mbeki</span>
+                        <span>10 Dec 2024</span>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-category">Sustainability</div>
+                    <h3 class="card-title">Environmental Solutions for Climate Change</h3>
+                    <p class="card-description">Our environmental science centres are developing innovative approaches to climate adaptation and mitigation strategies.</p>
+                    <div class="card-meta">
+                        <span>Prof. Emmanuel Osei</span>
+                        <span>8 Dec 2024</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-section">
+                <div class="highlight-content">
+                    <h3 class="highlight-title">New Partnerships Announced</h3>
+                    <p>AAU-ACE has formed strategic partnerships with leading international universities to enhance research collaboration and student exchange programs.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-links">
+                <a href="#">Visit AAU Website</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Subscribe</a>
+                <a href="#">Archive</a>
+            </div>
+            <div>
+                © 2024 Africa Higher Education Centres of Excellence<br>
+                Association of African Universities
+            </div>
+        </div>
+<!-- Page 3 -->
+<div class="newsletter-container" style="margin-top: 50px; background: #f9fafb;">
+
+  <!-- Intro Header -->
+  <div style="background: linear-gradient(90deg, #0f172a, #1e40af); color: white; padding: 40px 20px; text-align: center;">
+    <h2 style="font-size: 26px; margin-bottom: 10px;">The People Behind the Progress</h2>
+    <p style="font-size: 14px; max-width: 600px; margin: 0 auto;">
+      Meet the researchers, educators, students, and community leaders driving impact through the AAU-ACE initiative. This edition highlights personal stories of dedication, innovation, and resilience from across the continent.
+    </p>
+  </div>
+
+  <!-- Story 1 -->
+  <div style="display: flex; flex-wrap: wrap; align-items: center; padding: 40px 20px; background: white;">
+    <div style="flex: 1; padding: 10px;">
+      <img src="https://ace.aau.org/wp-content/uploads/2023/11/Number-1.jpg" alt="Dr. Njeri" style="width: 100%; border-radius: 8px;">
+    </div>
+    <div style="flex: 2; padding: 10px;">
+      <h3 style="color: #1e3a8a; margin-bottom: 10px;">Dr. Grace Njeri – Lead Researcher, ACE II (Kenya)</h3>
+      <p style="font-size: 14px; color: #374151; line-height: 1.6;">
+        “When I joined the centre, we were a team of three. Today, we’ve published 12 peer-reviewed studies, partnered with international labs, and empowered more than 200 postgraduate students. The ACE platform gave us wings.”
+      </p>
+    </div>
+  </div>
+
+  <!-- Timeline Section -->
+  <div style="background: #e0f2fe; padding: 40px 20px;">
+    <h3 style="text-align: center; color: #1e3a8a; font-size: 22px; margin-bottom: 30px;">ACE Timeline Highlights</h3>
+    <ul style="list-style: none; padding: 0; max-width: 700px; margin: 0 auto;">
+      <li style="margin-bottom: 25px;">
+        <strong>2014:</strong> Launch of the ACE I initiative in West & Central Africa
+      </li>
+      <li style="margin-bottom: 25px;">
+        <strong>2018:</strong> ACE II expands to East & Southern Africa, targeting STEM and health
+      </li>
+      <li style="margin-bottom: 25px;">
+        <strong>2020:</strong> ACE Impact digital transformation push across 50+ centres
+      </li>
+      <li style="margin-bottom: 25px;">
+        <strong>2023:</strong> Gender and inclusivity programs scaled across 15 countries
+      </li>
+    </ul>
+  </div>
+
+  <!-- Story 2 -->
+  <div style="display: flex; flex-wrap: wrap; align-items: center; padding: 40px 20px; background: #ffffff;">
+    <div style="flex: 2; padding: 10px;">
+      <h3 style="color: #1e3a8a; margin-bottom: 10px;">Kwesi Mensah – ACE Graduate, Ghana</h3>
+      <p style="font-size: 14px; color: #374151; line-height: 1.6;">
+        “I never imagined I could work on solar power systems that would help light up my village. Through ACE Impact, I accessed funding, mentorship, and real-world experience that changed the trajectory of my life.”
+      </p>
+    </div>
+    <div style="flex: 1; padding: 10px;">
+      <img src="https://ace.aau.org/wp-content/uploads/2023/11/Number-1.jpg" alt="Kwesi" style="width: 100%; border-radius: 8px;">
+    </div>
+  </div>
+
+  <!-- Testimonial Block -->
+  <div style="padding: 40px 20px; background: #fef9c3;">
+    <h3 style="text-align: center; color: #92400e; font-size: 22px; margin-bottom: 20px;">Words from Our Community</h3>
+    <blockquote style="max-width: 650px; margin: 0 auto; font-size: 16px; font-style: italic; line-height: 1.7; color: #7c2d12;">
+      “The ACE program didn't just provide funding. It provided vision, structure, and a pan-African network of people working toward the same dream — a thriving, self-sustaining Africa through education.”
+    </blockquote>
+    <div style="text-align: center; margin-top: 15px; font-size: 12px; color: #92400e;">– Mariam Bah, Senegal</div>
+  </div>
+
+  <!-- CTA Footer -->
+  <div style="background: #1e3a8a; color: white; padding: 40px 20px; text-align: center;">
+    <h4 style="font-size: 18px; margin-bottom: 10px;">Want to Read More Stories?</h4>
+    <p style="font-size: 14px;">Visit the AAU-ACE portal or subscribe to receive future editions in your inbox.</p>
+    <a href="https://ace.aau.org" target="_blank" style="display: inline-block; margin-top: 15px; padding: 10px 20px; background: #fbbf24; color: #1e3a8a; border-radius: 6px; text-decoration: none; font-weight: bold;">Explore More</a>
+  </div>
+
+</div>
+
+</div>
+
+</body>
+</html>

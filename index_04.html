@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AAU-ACE Newsletter</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .newsletter-wrapper {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    .header {
+      background-color: #0a1d3d;
+      color: white;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+    }
+
+    .logo {
+      text-align: center;
+      padding: 1rem 0;
+    }
+
+    .logo img {
+      max-width: 100px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 1rem 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: 1.5rem;
+      color: #0a1d3d;
+      margin: 0.5rem 0 1rem;
+    }
+
+    .hero img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 8px;
+    }
+
+    .section {
+      padding: 1.5rem;
+    }
+
+    .section h2 {
+      color: #0a1d3d;
+      margin-bottom: 0.5rem;
+    }
+
+    .section p {
+      color: #333;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    .highlight {
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .highlight img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .highlight h2 {
+      color: #0a1d3d;
+      margin-bottom: 0.5rem;
+    }
+
+    .highlight p {
+      font-size: 0.95rem;
+      color: #444;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 620px) {
+      .header {
+        flex-direction: column;
+        text-align: center;
+        gap: 5px;
+      }
+
+      .hero h1 {
+        font-size: 1.25rem;
+      }
+
+      .section, .highlight {
+        padding: 1rem;
+      }
+    }
+    /* Page 2 */
+        .newsletter-wrapper {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    .header {
+      background-color: #0a1d3d;
+      color: white;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+    }
+
+    .page-indicator {
+      background-color: #f8f9fa;
+      padding: 0.5rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #666;
+      border-bottom: 1px solid #e9ecef;
+    }
+
+    .logo {
+      text-align: center;
+      padding: 1rem 0;
+    }
+
+    .logo img {
+      max-width: 100px;
+    }
+
+    .section {
+      padding: 1.5rem;
+    }
+
+    .section h2 {
+      color: #0a1d3d;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+
+    .section h3 {
+      color: #0a1d3d;
+      margin: 1.5rem 0 0.8rem;
+      font-size: 1.1rem;
+    }
+
+    .section p {
+      color: #333;
+      line-height: 1.6;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .feature-story {
+      background-color: #f8f9fa;
+      padding: 2rem;
+      margin: 1.5rem;
+      border-radius: 8px;
+      border-left: 4px solid #0a1d3d;
+    }
+
+    .feature-story h2 {
+      color: #0a1d3d;
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+    }
+
+    .feature-story img {
+      width: 100%;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .quote-box {
+      background-color: #e3f2fd;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 8px;
+      border-left: 4px solid #1976d2;
+      font-style: italic;
+    }
+
+    .quote-box .author {
+      font-weight: bold;
+      color: #0a1d3d;
+      text-align: right;
+      margin-top: 0.5rem;
+      font-style: normal;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .stat-item {
+      background-color: #0a1d3d;
+      color: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #ffd700;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .news-item {
+      background-color: white;
+      border: 1px solid #e9ecef;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .news-item img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .news-content {
+      padding: 1rem;
+    }
+
+    .news-item h4 {
+      color: #0a1d3d;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .news-item p {
+      font-size: 0.9rem;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    .news-meta {
+      font-size: 0.8rem;
+      color: #999;
+      margin-top: 0.5rem;
+    }
+
+    .upcoming-events {
+      background-color: #fff3e0;
+      padding: 1.5rem;
+      margin: 1.5rem;
+      border-radius: 8px;
+      border-left: 4px solid #ff9800;
+    }
+
+    .event-item {
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #e9ecef;
+    }
+
+    .event-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    .event-date {
+      font-weight: bold;
+      color: #ff9800;
+      font-size: 0.9rem;
+    }
+
+    .event-title {
+      font-weight: bold;
+      color: #0a1d3d;
+      margin: 0.3rem 0;
+    }
+
+    .event-description {
+      font-size: 0.9rem;
+      color: #666;
+      line-height: 1.4;
+    }
+
+    .footer {
+      background-color: #0a1d3d;
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+
+    .footer-links {
+      margin-bottom: 1rem;
+    }
+
+    .footer-links a {
+      color: #87ceeb;
+      text-decoration: none;
+      margin: 0 0.5rem;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 620px) {
+      .header {
+        flex-direction: column;
+        text-align: center;
+        gap: 5px;
+      }
+
+      .section, .feature-story, .upcoming-events {
+        padding: 1rem;
+        margin: 1rem;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="newsletter-wrapper">
+    <!-- Header -->
+    <div class="header">
+      <div>Issue No. 1</div>
+      <div>AAU-ACE</div>
+      <div>July 2025</div>
+    </div>
+
+    <!-- Logo -->
+    <div class="logo">
+      <img src="https://ace.aau.org/wp-content/uploads/2023/03/JPEG-ACE-IMPACT-FINAL-LOGO.jpg" alt="AAU Logo">
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+      <h1>Africa Higher Education Centres of Excellence Newsletter</h1>
+      <img src="https://blog.aau.org/wp-content/uploads/2022/11/Image-SIRA-1200x480.jpg" alt="ACE Hero">
+    </div>
+
+    <!-- Main Story -->
+    <div class="section">
+      <h2>Our Favorite Annual Event is Back</h2>
+      <p>
+        After two years of postponement, the AAU-ACE Stakeholders Forum is finally returning — and this time, it's hosted in Accra! Representatives from various Centres of Excellence will gather to share progress, showcase innovation, and strengthen collaboration across Africa’s higher education landscape.
+      </p>
+    </div>
+
+    <!-- Highlight Section -->
+    <div class="highlight">
+      <img src="https://ace.aau.org/wp-content/uploads/2022/08/8th-ACE-Impact-Regional-Workshop-banner-French.png" alt="Library Image">
+      <h2>What’s New Across Our Centres?</h2>
+      <p>
+        From new academic programs and research breakthroughs to strategic partnerships with industries, AAU-ACE centres continue to shape Africa’s future. This edition highlights innovations in health, agriculture, energy, and digital education. Stay tuned for more centre-level updates!
+      </p>
+    </div>
+    <!-- Page 2 -->
+     
+  <div class="newsletter-wrapper">
+    <!-- Header -->
+    <div class="header">
+      <div>Issue No. 1</div>
+      <div>AAU-ACE</div>
+      <div>July 2025</div>
+    </div>
+
+    <!-- Page Indicator -->
+    <div class="page-indicator">
+      PAGE 2 - CONTINUED FROM PAGE 1
+    </div>
+
+    <!-- Logo -->
+    <div class="logo">
+      <img src="https://ace.aau.org/wp-content/uploads/2023/03/JPEG-ACE-IMPACT-FINAL-LOGO.jpg" alt="AAU Logo">
+    </div>
+
+    <!-- Feature Story -->
+    <div class="feature-story">
+      <h2>Transforming African Higher Education Through Innovation</h2>
+      <img src="https://ace.aau.org/wp-content/uploads/2024/06/ACE-Team-at-AAU-Secretariat-1536x1024.jpg" alt="ACE Team">
+      
+      <p>
+        The Africa Higher Education Centres of Excellence (AAU-ACE) program has emerged as a transformative force in advancing higher education across the continent. Since its inception, the program has fostered collaboration between universities, research institutions, and industry partners to address Africa's most pressing challenges through innovative research and education.
+      </p>
+      
+      <p>
+        Our centres have made significant strides in areas such as sustainable agriculture, renewable energy, public health, and digital transformation. Through strategic partnerships and collaborative research initiatives, we have successfully trained thousands of graduate students and researchers who are now leading change in their respective fields.
+      </p>
+
+      <div class="quote-box">
+        "The AAU-ACE program represents the future of African higher education - one that is research-driven, innovation-focused, and deeply connected to the needs of our communities."
+        <div class="author">- Prof. Olusola Oyewole, Secretary-General, Association of African Universities</div>
+      </div>
+
+      <h3>Research Excellence and Impact</h3>
+      
+      <p>
+        Over the past year, our centres have published over 500 peer-reviewed research papers, filed 45 patent applications, and established 30 new industry partnerships. These achievements demonstrate our commitment to generating knowledge that drives economic growth and social development across Africa.
+      </p>
+
+      <p>
+        The agricultural centres have developed drought-resistant crop varieties that are now being cultivated by farmers in 12 countries, while our health centres have made breakthrough discoveries in tropical disease research that are improving healthcare outcomes in rural communities. Meanwhile, our technology centres have created digital solutions that are revolutionizing education delivery and financial inclusion across the continent.
+      </p>
+
+      <h3>Building Sustainable Partnerships</h3>
+      
+      <p>
+        Collaboration remains at the heart of our success. We have established partnerships with leading international universities, research institutions, and industry leaders to ensure that our research and training programs meet global standards while addressing local challenges. These partnerships provide our students and faculty with access to cutting-edge facilities, funding opportunities, and international networks.
+      </p>
+
+      <p>
+        Our industry partnerships have resulted in the creation of over 200 jobs for our graduates and have facilitated technology transfer that has benefited local communities. We continue to work closely with government agencies, NGOs, and private sector partners to ensure that our research findings are translated into practical solutions that make a real difference in people's lives.
+      </p>
+    </div>
+
+    <!-- Statistics -->
+    <div class="section">
+      <h2>Our Impact by Numbers</h2>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">25</div>
+          <div class="stat-label">Active Centres</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">15</div>
+          <div class="stat-label">Countries</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">5,000+</div>
+          <div class="stat-label">Graduate Students</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">500+</div>
+          <div class="stat-label">Research Papers</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- News Updates -->
+    <div class="section">
+      <h2>Latest News from Our Centres</h2>
+      <div class="news-grid">
+        <div class="news-item">
+          <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Medical Research">
+          <div class="news-content">
+            <h4>Breakthrough in Malaria Research</h4>
+            <p>Researchers at the Centre for Excellence in Health Sciences have identified a new compound that shows promising results in treating drug-resistant malaria strains.</p>
+            <div class="news-meta">University of Lagos | June 2025</div>
+          </div>
+        </div>
+        
+        <div class="news-item">
+          <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Agriculture">
+          <div class="news-content">
+            <h4>Smart Farming Initiative Launch</h4>
+            <p>The Agricultural Technology Centre unveils an AI-powered platform that helps smallholder farmers optimize crop yields and reduce resource waste.</p>
+            <div class="news-meta">Makerere University | June 2025</div>
+          </div>
+        </div>
+        
+        <div class="news-item">
+          <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Technology">
+          <div class="news-content">
+            <h4>Digital Innovation Hub Opens</h4>
+            <p>A new state-of-the-art facility for digital innovation and entrepreneurship opens its doors to students and researchers across West Africa.</p>
+            <div class="news-meta">University of Ghana | July 2025</div>
+          </div>
+        </div>
+        
+        <div class="news-item">
+          <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Environment">
+          <div class="news-content">
+            <h4>Climate Change Adaptation Program</h4>
+            <p>Environmental scientists launch a comprehensive program to help coastal communities adapt to the effects of climate change and rising sea levels.</p>
+            <div class="news-meta">University of Cape Town | June 2025</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Upcoming Events -->
+    <div class="upcoming-events">
+      <h2>Upcoming Events & Conferences</h2>
+      
+      <div class="event-item">
+        <div class="event-date">August 15-17, 2025</div>
+        <div class="event-title">AAU-ACE Annual Research Conference</div>
+        <div class="event-description">
+          Join researchers, policymakers, and industry leaders in Nairobi for three days of presentations, workshops, and networking opportunities focused on advancing African higher education and research.
+        </div>
+      </div>
+      
+      <div class="event-item">
+        <div class="event-date">September 5-7, 2025</div>
+        <div class="event-title">African Innovation Summit</div>
+        <div class="event-description">
+          A premier gathering of innovators, entrepreneurs, and investors showcasing cutting-edge technologies and solutions developed by African universities and research institutions.
+        </div>
+      </div>
+      
+      <div class="event-item">
+        <div class="event-date">October 10-12, 2025</div>
+        <div class="event-title">Sustainable Agriculture Workshop</div>
+        <div class="event-description">
+          Hands-on training and knowledge sharing session on sustainable farming practices, climate-smart agriculture, and food security solutions for African communities.
+        </div>
+      </div>
+      
+      <div class="event-item">
+        <div class="event-date">November 20-22, 2025</div>
+        <div class="event-title">Digital Health Solutions Forum</div>
+        <div class="event-description">
+          Exploring how digital technologies can transform healthcare delivery across Africa, featuring demonstrations of telemedicine platforms, mobile health apps, and AI-powered diagnostic tools.
+        </div>
+      </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="section">
+      <h2>Get Involved</h2>
+      <p>
+        We invite universities, researchers, students, and industry partners to join our growing network of excellence. Whether you're interested in collaborative research opportunities, student exchange programs, or industry partnerships, there are numerous ways to contribute to Africa's educational transformation.
+      </p>
+      <p>
+        Visit our website to learn more about application processes, funding opportunities, and upcoming programs. Together, we can build a stronger, more innovative African higher education system that serves the needs of our continent and contributes to global knowledge.
+      </p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="footer-links">
+        <a href="#">AAU Website</a>
+        <a href="#">Research Portal</a>
+        <a href="#">Apply Now</a>
+        <a href="#">Contact Us</a>
+        <a href="#">Subscribe</a>
+      </div>
+      <div>
+        © 2025 Association of African Universities - Africa Higher Education Centres of Excellence<br>
+        www.aau.org | Page 2 of 2
+      </div>
+    </div>
+  </div>
+  </div>
+</body>
+</html>
